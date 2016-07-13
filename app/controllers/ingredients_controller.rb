@@ -10,10 +10,22 @@ class IngredientsController < ApplicationController
   end
 
   def create
-    
+    i = IngredientType.find_or_create_by(params[:ingredient][:ingredient_type])
+    m = Measurement.find_or_create_by(params[:ingredient][:measurement])
+    @ingredient = Ingredient.new(ingredient_type: i, amount: params[:ingredient][:amount].to_i, measurement: m)
+
+    if @ingredient.save
+      redirect_to ingredient_url(@ingredient)
+    else
+      @errors = @ingredient.errors.full_messages
+      render 'new'
+    end
   end
 
-
+  def destroy
+    @ingredient.destroy
+    redirect_to '/'
+  end
 
   private
   def ingredient_params
