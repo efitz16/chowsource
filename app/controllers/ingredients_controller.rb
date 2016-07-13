@@ -4,9 +4,11 @@ class IngredientsController < ApplicationController
   end
 
   def new
-    @ingredient = Ingredient.new(ingredient_params)
+    @ingredient = Ingredient.new
   end
 
   private
-  # ingredient_params
+  def ingredient_params
+    params.require(:ingredient).permit(:ingredient_type, :amount, :measurement)
+  end
 end
