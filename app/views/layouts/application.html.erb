@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Chowsource</title>
-  <%= render 'layouts/rails_defaults' %>
-  <%= render 'layouts/shims' %>
-  </head>
-<body>
-  <%= render 'layouts/headers' %>
-  
-<%= yield %>
+  <head>
+    <title>Chowsource</title>
+    <%= render 'layouts/rails_defaults' %>
+    <%= render 'layouts/shims' %>
+    </head>
+  <body>
+  <div class="container center">
+    <%= render 'layouts/headers' %>
+    
+      <%= yield %>
 
-</body>
+    <%= render 'layouts/footers' %>
+  </div>
+  </body>
 </html>
