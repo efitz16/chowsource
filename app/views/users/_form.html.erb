@@ -1,13 +1,13 @@
 <%= form_for(@user) do |f|  %>
-  <%= #errors#%>
+  
   <%= f.label :username %>
   <%= f.text_field :username %>
 
-  <%= f.label :email%>
+  <%= f.label :email %>
   <%= f.text_field :email %>
 
   <%= f.label :password %>
   <%= f.text_field :password %>
 
-  <%= f.submit 'Sign up' signup_path %>
-<% end%>
+  <%= f.submit %>
+<% end %>
