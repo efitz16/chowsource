@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   def create 
     @user = User.new(user_params)
     if @user.save
-      flash[:succes] = "Get cooking! You've created a Chowsource Account!"
+      flash[:success] = "Get cooking! You've created a Chowsource Account!"
       redirect_to root_url
     else
       render 'new'
