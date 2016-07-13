@@ -1,10 +1,10 @@
 class StaticPagesController < ApplicationController
   def home
-    if logged_in?
+    # if logged_in?
+    #   @receipe = current_user.receipes.build
 
-
-
-    end
+    #   @receipes = Receipe.where(user: current_user)
+    # end
   end
 
   def about
