@@ -19,7 +19,6 @@ class UsersController < ApplicationController
       flash[:success] = "Get cooking! You've created a Chowsource Account!"
       redirect_to root_url
     else
-      binding.pry
       render 'new'
     end
   end
