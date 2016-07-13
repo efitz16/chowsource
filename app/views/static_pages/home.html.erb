@@ -1,0 +1,14 @@
+<%= if @recipe %>
+  <div>
+    <section class="post_form">
+      <%= render 'views/recipes/form' %>
+    </section>
+    <section class="my-recipes">
+      <%= render @recipes %>
+    </section>
+  </div>
+<% else %>
+  <div class="center jumbotron">
+    <p> Welcome! Please <%= link_to "sign up", signup_path %> </p>
+  </div>
+<% end %>
