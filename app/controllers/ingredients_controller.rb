@@ -1,4 +1,6 @@
 class IngredientsController < ApplicationController
+  before_action :get_ingredient, except:[:index, :new, :create]
+
   def index
     @ingredients = Ingredient.all
   end
@@ -6,6 +8,12 @@ class IngredientsController < ApplicationController
   def new
     @ingredient = Ingredient.new
   end
+
+  def create
+    
+  end
+
+
 
   private
   def ingredient_params
