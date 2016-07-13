@@ -20,23 +20,30 @@ measurements = %w(cup tablespoon teaspoon stick ounce pound gram pint quart gall
 
 Recipe.create(title: "bread", course: "lunch", directions: "bake it, duh", description: "warm and delicious", time: 60, difficulty: 3, user: User.find_by(username: "hello"))
 
-courses = %w(breakfast lunch dinner dessert)
+courses = %w(appetizer breakfast lunch dinner dessert snack)
 
 Ingredient.create(ingredient_type: IngredientType.find_by(name: "flour"), measurement: Measurement.find_by(name: "cup"), amount: 3)
 
 FoodPrep.create(ingredient: Ingredient.find_by(amount: 3), recipe: Recipe.find_by(title: "bread"))
 
+types.each do |t|
+  IngredientType.create(name: t)
+end
 
 ingredientz = []
 
 25.times do
-   ingredientz << IngredientType.create(name: types.sample)
+   ingredientz << IngredientType.all.sample
+end
+
+measurements.each do |m|
+  Measurement.create(name: m)
 end
 
 measurementz = []
 
 25.times do
-   measurementz << Measurement.create(name: measurements.sample)
+   measurementz << Measurement.all.sample
 end
 
 56.times do
