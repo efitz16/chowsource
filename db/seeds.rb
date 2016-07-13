@@ -16,7 +16,7 @@ types = %w(flour butter milk eggs chicken rabbit jeff beef carrots corn oranges 
 
 Measurement.create(name: "cup")
 
-measurements = %w(cup tablespoon teaspoon stick ounce pound gram pint quart gallon slice)
+measurements = %w(tablespoon teaspoon stick ounce pound gram pint quart gallon slice)
 
 Recipe.create(title: "bread", course: "lunch", directions: "bake it, duh", description: "warm and delicious", time: 60, difficulty: 3, user: User.find_by(username: "hello"))
 
@@ -61,5 +61,3 @@ end
 end
 
 # can this be cleaned up: Recipe.find(59).ingredients.first.ingredient_type.name
-
-
