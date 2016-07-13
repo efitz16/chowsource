@@ -1,4 +1,5 @@
 class StaticPagesController < ApplicationController
+  include ApplicationHelper
   def home
     if logged_in?
       @recipe = current_user.recipes.build
