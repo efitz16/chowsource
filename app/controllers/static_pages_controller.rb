@@ -3,7 +3,7 @@ class StaticPagesController < ApplicationController
     if logged_in?
       @recipe = current_user.recipes.build
 
-      @recipes = Recipe.where(user: current_user)
+      @recipes = current_user.recipes
     end
   end
 
