@@ -6,8 +6,3 @@ Directions: <%= @recipe.directions %><br>
 Time to make: <%= @recipe.time %><br>
 Difficulty scale: <%= @recipe.difficulty %><br>
 Recipe author: <%= @recipe.user.username %><br>
-
-<%= link_to "Edit", edit_recipe_path(@recipe)%>
-<%= link_to "Delete this Recipe", recipe_path(@recipe),
-      method: :delete,
-      data: {confirm: "Are you sure you want to delete this recipe?" } %>

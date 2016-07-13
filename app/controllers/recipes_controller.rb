@@ -11,14 +11,35 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new
   end
 
+  def edit
+    @recipe = Recipe.find(params[:id])
+  end
+
   def create
-    @recipe = user.recipe.build(recipe_params)
+    @recipe = current_user.recipe.build(recipe_params)
 
     if @recipe.save
-
+      redirect_to recipe_url(@recipe)
     else
-
+      render 'new'
     end
+  end
+
+  def update
+    @recipe = Recipe.find(params[:id])
+
+    if @recipe.update(recipe_params)
+      redirect_to recipe_url(@recipe)
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+    @recipe = Recipe.find(params[:id])
+    @recipe.destroy
+
+    redirect_to recipes_url
   end
 
   private

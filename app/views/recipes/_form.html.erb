@@ -1,0 +1,44 @@
+<%= form_for @recipe do |f| %>
+  <% if @recipe.errors.any? %>
+    <ul>
+      <% @recipe.errors.full_messages.each do |error| %>
+        <li><%= error %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <p>
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </p>
+
+  <p>
+    <%= f.label :course %><br>
+    <%= f.select :course, options_for_courses, prompt: "Select One"%>
+  </p>
+
+  <p>
+    <%= f.label :description %><br>
+    <%= f.text_area :description, cols: 50, rows: 5 %>
+  </p>
+
+  <p>
+    <%= f.label :directions %><br>
+    <%= f.text_area :directions, cols: 50, rows: 5 %>
+  </p>
+
+  <p>
+    <%= f.label :time_in_minutes %><br>
+    <%= f.number_field :time %>
+  </p>
+
+  <p>
+    <%= f.label :difficulty %><br>
+    <%= f.select :difficulty, options_for_difficulty, prompt: "Select One" %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+
+<% end %>
