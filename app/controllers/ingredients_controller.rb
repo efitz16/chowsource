@@ -26,6 +26,11 @@ class IngredientsController < ApplicationController
     end
   end
 
+  def edit
+
+
+  end
+
   def destroy
     @ingredient.destroy
     redirect_to '/'

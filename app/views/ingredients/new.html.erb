@@ -7,7 +7,7 @@
   <%=f.number_field :amount %><br>
 
   <%=f.label :measurement %>
-  <%=f.select :measurement, options_for_measurements, prompt:"Select a measurement"  %><br>
+  <%=f.select :measurement, options_for_measurements, prompt:"--"  %><br>
 
   <%=f.submit "New Ingredient" %>
 <% end %>

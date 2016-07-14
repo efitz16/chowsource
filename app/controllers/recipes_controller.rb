@@ -1,10 +1,10 @@
 class RecipesController < ApplicationController
+  before_action :current_user, :only => [:show]
   def index
     @recipes = Recipe.all
   end
 
   def show
-    current_user
     @recipe = Recipe.find(params[:id])
   end
 
@@ -27,7 +27,8 @@ class RecipesController < ApplicationController
       @recipe = current_user.recipes.build(recipe_params)
 
       if @recipe.save
-        redirect_to recipe_url(@recipe)
+        # redirect_to recipe_url(@recipe)
+        redirect_to new_recipe_ingredient_url(@recipe)
       else
         render 'new'
       end
