@@ -2,20 +2,24 @@ class IngredientsController < ApplicationController
   before_action :get_ingredient, except:[:index, :new, :create]
 
   def index
-    @ingredients = Ingredient.all
+    @ingredients = Recipe.find(params[:recipe_id]).ingredients
   end
 
   def new
+    @recipe = Recipe.find(params[:recipe_id])
     @ingredient = Ingredient.new
   end
 
   def create
-    i = IngredientType.find_or_create_by(params[:ingredient][:ingredient_type])
-    m = Measurement.find_or_create_by(params[:ingredient][:measurement])
+    @recipe = Recipe.find(params[:recipe_id])
+    i = IngredientType.find_or_create_by(name: params[:ingredient][:ingredient_type])
+    m = Measurement.find_or_create_by(name: params[:ingredient][:measurement])
+
     @ingredient = Ingredient.new(ingredient_type: i, amount: params[:ingredient][:amount].to_i, measurement: m)
 
     if @ingredient.save
-      redirect_to ingredient_url(@ingredient)
+      @recipe.ingredients << @ingredient
+      redirect_to recipe_url(@recipe)
     else
       @errors = @ingredient.errors.full_messages
       render 'new'

@@ -10,6 +10,6 @@ Rails.application.routes.draw do
 
   resources :recipes do
     resources :ratings, shallow: true
+    resources :ingredients, shallow: true
   end
-  resources :ingredients
 end
