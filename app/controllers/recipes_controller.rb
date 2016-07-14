@@ -19,7 +19,7 @@ class RecipesController < ApplicationController
     # if current_user != @recipe.user
     #   redirect_to recipe_url(@recipe)
     # end
-    redirect_to recipe_url(@recipe) unless current_user?(@recipe.user)
+    redirect_to recipe_url(@recipe) unless current_user == @recipe.user
   end
 
   def create
@@ -39,7 +39,7 @@ class RecipesController < ApplicationController
 
   def update
     @recipe = Recipe.find(params[:id])
-    if current_user?(@recipe.user)
+    if current_user == @recipe.user
       if @recipe.update(recipe_params)
         redirect_to recipe_url(@recipe)
       else
@@ -52,9 +52,9 @@ class RecipesController < ApplicationController
 
   def destroy
     @recipe = Recipe.find(params[:id])
-    if current_user?(@recipe.user)
+    if current_user == @recipe.user
       @recipe.destroy
-      redirect_to recipes_url
+      redirect_to user_url(current_user)
     else
       # This needs to raise an error, but not sure how to implement
       redirect_to recipe_url(@recipe)

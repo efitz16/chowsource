@@ -12,7 +12,6 @@ class IngredientsController < ApplicationController
     # else
       # flash[:danger] = "Cannot Edit Recipes You Did Not Submit"
       # redirect_to '/'
-    end
   end
 
   def create
