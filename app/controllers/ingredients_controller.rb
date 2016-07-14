@@ -6,8 +6,13 @@ class IngredientsController < ApplicationController
   end
 
   def new
-    @recipe = Recipe.find(params[:recipe_id])
-    @ingredient = Ingredient.new
+    # if current_user?
+      @recipe = Recipe.find(params[:recipe_id])
+      @ingredient = Ingredient.new
+    # else
+      # flash[:danger] = "Cannot Edit Recipes You Did Not Submit"
+      # redirect_to '/'
+    end
   end
 
   def create
