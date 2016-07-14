@@ -5,6 +5,7 @@ class Recipe < ActiveRecord::Base
   has_many :measurements, through: :ingredients, source: :measurements
   has_many :food_preps, dependent: :destroy
   has_many :ingredients, through: :food_preps
+  has_many :ratings, dependent: :destroy
 
   validates :title, :course, :directions, :description, :time, :difficulty, :user_id, presence: true
   validates :title, length: { maximum: 64 }
@@ -15,4 +16,7 @@ class Recipe < ActiveRecord::Base
 
   validates :course,  uniqueness: { scope: [:user, :course], message: "only 1 recipe per course per user allowed" }
 
+  def average_rating
+    self.ratings.map {|rating| rating.value}.reduce(:+)/self.ratings.count
+  end
 end
