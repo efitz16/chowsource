@@ -15,6 +15,10 @@ class RecipesController < ApplicationController
   def edit
     login_redirect
     @recipe = Recipe.find(params[:id])
+    # if current_user != @recipe.user
+    #   redirect_to recipe_url(@recipe)
+    # end
+    redirect_to recipe_url(@recipe) unless current_user?(@recipe.user)
   end
 
   def create
