@@ -1,4 +1,4 @@
-<% if @recipe %>
+<% if @current_user %>
   <div class='row'>
     <aside class="col-md-4">
       <section class="post_form">
@@ -10,7 +10,7 @@
       <h2 class="center" >Your recipes</h2>
       <section class="my-recipes center-block">
 
-        <%= render @recipes %>
+        <%= render @recipes[0..-2] %>
       </section>
     </div>
   </div>
