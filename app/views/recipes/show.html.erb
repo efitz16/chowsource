@@ -1,20 +1,29 @@
-<h1><%= @recipe.title %></h1>
 
-Course: <%= @recipe.course %><br>
-Description: <%= @recipe.description %><br>
-Directions: <%= @recipe.directions %><br>
-Time to make: <%= @recipe.time %><br>
-Difficulty scale: <%= @recipe.difficulty %><br>
-Recipe author: <%= @recipe.user.username %><br>
+  <h1><%= @recipe.title %></h1>
 
-<% if logged_in? && @current_user == @recipe.user %>
-  <%= link_to "Edit", edit_recipe_path(@recipe)%>
-  <%= link_to "Delete this Recipe", recipe_path(@recipe),
-        method: :delete,
-        data: {confirm: "Are you sure you want to delete this recipe?" } %>
-<% end %>
+  <div class="rating">
+  <% 5.times do |avg| %>
+    <%= button_to "#{avg+1}", recipe_ratings_path(@recipe) + "?value=#{avg}", method: :create, class: 'rating-button', id: avg %>
+  <% end %>
+  <br>
+  Average Rating: <%= @recipe.average_rating %>
+  </div>
+
+  Course: <%= @recipe.course %><br>
+  Description: <%= @recipe.description %><br>
+  Directions: <%= @recipe.directions %><br>
+  Time to make: <%= @recipe.time %><br>
+  Difficulty scale: <%= @recipe.difficulty %><br>
+  Recipe author: <%= @recipe.user.username %><br>
+
+  <% if logged_in? && @current_user == @recipe.user %>
+    <%= link_to "Edit", edit_recipe_path(@recipe)%>
+    <%= link_to "Delete this Recipe", recipe_path(@recipe),
+          method: :delete,
+          data: {confirm: "Are you sure you want to delete this recipe?" } %>
+  <% end %>
 
 
 
 
-<%= link_to "Back", recipes_path %>
+  <%= link_to "Back", recipes_path %>

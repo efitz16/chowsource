@@ -1,4 +1,7 @@
-<h1><%= recipe.title %></h1>
+<% if @recipes.count != 0 %>
+
+
+<h1><%= link_to recipe.title, recipe_path(recipe) %></h1>
 
 Course: <%= recipe.course %><br>
 Description: <%= recipe.description %><br>
@@ -6,3 +9,5 @@ Directions: <%= recipe.directions %><br>
 Time to make: <%= recipe.time %><br>
 Difficulty scale: <%= recipe.difficulty %><br>
 Recipe author: <%= recipe.user.username %><br>
+
+<% end %>
