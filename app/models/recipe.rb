@@ -17,6 +17,17 @@ class Recipe < ActiveRecord::Base
   validates :course,  uniqueness: { scope: [:user, :course], message: "only 1 recipe per course per user allowed" }
 
   def average_rating
-    self.ratings.map {|rating| rating.value}.reduce(:+)/self.ratings.count
+    length = self.ratings.count
+
+    if length == 0
+      self.ratings.map {|rating| rating.value}.reduce(0, :+)
+    else
+      self.ratings.map {|rating| rating.value}.reduce(0, :+)/length
+    end
+  end
+
+  def self.sort_by_rating
+    binding.pry
+    # self.all
   end
 end

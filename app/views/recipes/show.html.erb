@@ -1,9 +1,14 @@
 <h1><%= @recipe.title %></h1>
 
-<%= 5.times do |avg| %>
-  <%= button_to "#{@recipe.average_rating}", recipe_ratings_path(@recipe), method: :create, class: 'rating-button', id: avg %>
-  <!-- was render @rating - go to _rating -->
+<div>
+<% 5.times do |avg| %>
+  <%= button_to "#{avg+1}", recipe_ratings_path(@recipe) + "?value=#{avg}", method: :create, class: 'rating-button', id: avg %>
 <% end %>
+<br>
+Average Rating: <%= @recipe.average_rating %>
+</div>
+
+<%= button_to "click", recipe_path(@recipe)
 
 Course: <%= @recipe.course %><br>
 Description: <%= @recipe.description %><br>
