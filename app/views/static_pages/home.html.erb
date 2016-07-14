@@ -1,11 +1,18 @@
 <% if @recipe %>
-  <div>
-    <section class="post_form">
-      <%= render 'recipes/form' %>
-    </section>
-    <section class="my-recipes">
-      <%= render @recipes %>
-    </section>
+  <div class='row'>
+    <aside class="col-md-4">
+      <section class="post_form">
+      <h3>Enter a new recipe</h3>
+        <%= render 'recipes/form' %>
+      </section>
+    </aside>
+    <div class='col-md-8 pull-right'>
+      <h2 class="center" >Your recipes</h2>
+      <section class="my-recipes center-block">
+
+        <%= render @recipes %>
+      </section>
+    </div>
   </div>
 <% else %>
   <div class="center jumbotron">

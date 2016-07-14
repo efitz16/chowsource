@@ -1,4 +1,5 @@
 <% if logged_in? %>
+<nav class="nav navbar navbar-right">
     <%= link_to current_user.username, user_path(id: session[:user_id]) %> |
     <%= link_to 'Logout', logout_path, method: :delete %> |
   <% else %>
@@ -6,3 +7,4 @@
     <%= link_to 'Create an account', signup_path %> |
 <% end %>
   <%= link_to 'home', root_path %>
+</nav>
