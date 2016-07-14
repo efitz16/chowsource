@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   resources :users, :except => [:new]
 
-  resources :recipes
-  resources :ingredients
+  resources :recipes do
+    resources :ingredients, shallow: true
+  end
 end
