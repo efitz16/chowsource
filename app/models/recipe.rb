@@ -13,4 +13,6 @@ class Recipe < ActiveRecord::Base
   validates :time, :difficulty, numericality: true
   validates :difficulty, inclusion: { in: [1, 2, 3, 4, 5] }
 
+  validates :course,  uniqueness: { scope: [:user, :course], message: "only 1 recipe per course per user allowed" }
+
 end
