@@ -5,8 +5,8 @@ class ApplicationController < ActionController::Base
   
   include SessionsHelper
 
-  def current_user?(user)
-    user == current_user
+  def current_user?
+    @user == current_user
   end
 
   # def current_user
