@@ -18,9 +18,9 @@ Measurement.create(name: "cup")
 
 measurements = %w(cup tablespoon teaspoon stick ounce pound gram pint quart gallon slice)
 
-Recipe.create(title: "bread", course: "lunch", directions: "bake it, duh", description: "warm and delicious", time: 60, difficulty: 3, user: User.find_by(username: "hello"))
+Recipe.create(title: "bread", course: "Lunch", directions: "shake it and bake it, duh", description: "warm and deliciously delicious", time: 60, difficulty: 3, user: User.find_by(username: "hello"))
 
-courses = %w(appetizer breakfast lunch dinner dessert snack)
+courses = %w(Appetizer Breakfast Lunch Dinner Dessert Snack)
 
 Ingredient.create(ingredient_type: IngredientType.find_by(name: "flour"), measurement: Measurement.find_by(name: "cup"), amount: 3)
 
