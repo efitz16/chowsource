@@ -1,4 +1,3 @@
-
   <h1><%= @recipe.title %></h1>
 
   <div class="rating">
@@ -9,19 +8,34 @@
   Average Rating: <%= @recipe.average_rating %>
   </div>
 
-  Course: <%= @recipe.course %><br>
-  Description: <%= @recipe.description %><br>
-  Directions: <%= @recipe.directions %><br>
-  Time to make: <%= @recipe.time %><br>
-  Difficulty scale: <%= @recipe.difficulty %><br>
-  Recipe author: <%= @recipe.user.username %><br>
+Course: <%= @recipe.course %><br>
+Description: <%= @recipe.description %><br>
+Ingredients:
+  <ul>
+    <% @recipe.ingredients.each do |ingredient| %>
+      <li>
+        <%=pluralize(ingredient.amount, ingredient.measurement.name)%> <%= ingredient.ingredient_type.name %><br>
+        <% if creator?(@current_user, @recipe) %>
+          <%= link_to "Edit", edit_ingredient_path(ingredient)%>
+          <%= link_to "Delete this Ingredient", ingredient_path(ingredient),
+              method: :delete,
+              data: {confirm: "Are you sure you want to delete this recipe?" } %>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+<%= link_to "Add an ingredient", new_recipe_ingredient_path(@recipe) if creator?(@current_user, @recipe) %><br>
+Directions: <%= @recipe.directions %><br>
+Time to make: <%= @recipe.time %><br>
+Difficulty scale: <%= @recipe.difficulty %><br>
+Recipe author: <%= @recipe.user.username %><br>
 
-  <% if logged_in? && @current_user == @recipe.user %>
-    <%= link_to "Edit", edit_recipe_path(@recipe)%>
-    <%= link_to "Delete this Recipe", recipe_path(@recipe),
-          method: :delete,
-          data: {confirm: "Are you sure you want to delete this recipe?" } %>
-  <% end %>
+<% if creator?(@current_user, @recipe) %>
+  <%= link_to "Edit", edit_recipe_path(@recipe)%>
+  <%= link_to "Delete this Recipe", recipe_path(@recipe),
+        method: :delete,
+        data: {confirm: "Are you sure you want to delete this recipe?" } %>
+<% end %>
 
 
 
