@@ -27,7 +27,13 @@ class Recipe < ActiveRecord::Base
   end
 
   def self.sort_by_rating
-    binding.pry
-    # self.all
+     self.all.sort_by { |r| r.true_rating }.reverse
+  end
+
+  def true_rating
+    number_of_votes = Recipe.all.map { |r| r.ratings.count }.reduce(0, :+)
+    weight = self.ratings.count/number_of_votes.to_f
+
+    self.ratings.map { |r| r.value * weight }.reduce(0, :+)
   end
 end
