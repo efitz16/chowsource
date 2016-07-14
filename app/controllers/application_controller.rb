@@ -30,4 +30,8 @@ class ApplicationController < ActionController::Base
   # end
 
 
+  def login_redirect
+    redirect_to login_url unless logged_in?
+  end
+
 end
