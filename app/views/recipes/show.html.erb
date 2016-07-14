@@ -7,7 +7,7 @@ Time to make: <%= @recipe.time %><br>
 Difficulty scale: <%= @recipe.difficulty %><br>
 Recipe author: <%= @recipe.user.username %><br>
 
-<% if logged_in? && current_user == @recipe.user %>
+<% if logged_in? && @current_user == @recipe.user %>
   <%= link_to "Edit", edit_recipe_path(@recipe)%>
   <%= link_to "Delete this Recipe", recipe_path(@recipe),
         method: :delete,
