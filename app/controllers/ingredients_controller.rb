@@ -28,10 +28,16 @@ class IngredientsController < ApplicationController
 
   def edit
 
+  end
 
+  def update()
+    @recipe = Recipe.find(params[:recipe_id])
+    if @ingredient.update(ingredient_params)
+      redirect_to recipe_path(@recipe)
   end
 
   def destroy
+
     @ingredient.destroy
     redirect_to '/'
   end
@@ -39,5 +45,9 @@ class IngredientsController < ApplicationController
   private
   def ingredient_params
     params.require(:ingredient).permit(:ingredient_type, :amount, :measurement)
+  end
+
+  def get_ingredient
+    @ingredient = Ingredient.find(params[:id])
   end
 end

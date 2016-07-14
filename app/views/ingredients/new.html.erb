@@ -1,13 +1,2 @@
 <h1> New Ingredient </h1>
-<%=form_for([@recipe, @ingredient]) do |f| %>
-  <%=f.label :ingredient_type %>
-  <%=f.text_field :ingredient_type %><br>
-
-  <%=f.label :amount %>
-  <%=f.number_field :amount %><br>
-
-  <%=f.label :measurement %>
-  <%=f.select :measurement, options_for_measurements, prompt:"--"  %><br>
-
-  <%=f.submit "New Ingredient" %>
-<% end %>
+<%= render 'form' %>
