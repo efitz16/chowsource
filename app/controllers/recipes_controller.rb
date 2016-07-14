@@ -8,38 +8,52 @@ class RecipesController < ApplicationController
   end
 
   def new
+    login_redirect
     @recipe = Recipe.new
   end
 
   def edit
+    login_redirect
     @recipe = Recipe.find(params[:id])
   end
 
   def create
-    @recipe = current_user.recipes.build(recipe_params)
+    if logged_in?
+      @recipe = current_user.recipes.build(recipe_params)
 
-    if @recipe.save
-      redirect_to recipe_url(@recipe)
+      if @recipe.save
+        redirect_to recipe_url(@recipe)
+      else
+        render 'new'
+      end
     else
-      render 'new'
+      redirect_to login_url
     end
   end
 
   def update
     @recipe = Recipe.find(params[:id])
-
-    if @recipe.update(recipe_params)
-      redirect_to recipe_url(@recipe)
+    if current_user?(@recipe.user)
+      if @recipe.update(recipe_params)
+        redirect_to recipe_url(@recipe)
+      else
+        render 'edit'
+      end
     else
-      render 'edit'
+      redirect_to recipe_url(@recipe)
     end
   end
 
   def destroy
     @recipe = Recipe.find(params[:id])
-    @recipe.destroy
-
-    redirect_to recipes_url
+    if current_user?(@recipe.user)
+      @recipe.destroy
+      redirect_to recipes_url
+    else
+      # This needs to raise an error, but not sure how to implement
+      redirect_to recipe_url(@recipe)
+      # flash.now[:error] = "You do not have permission to delete this recipe."
+    end
   end
 
   private
