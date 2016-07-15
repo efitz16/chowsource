@@ -8,7 +8,7 @@
 
 require 'faker'
 
-users = [User.create(username: "hello", email: "h@h.com", password_digest: "Password1"), User.create(username: "ciacci1234", email: "ciacci@ciacci.com", password_digest: "Password1"), User.create(username: "joell", email: "joell@joell.com", password_digest: "Password1"), User.create(username: "jeff", email: "jeff-l@jeff.com", password_digest: "Password1")]
+users = [User.create(username: "hello", email: "hell@hello.com", password: "Password1"), User.create(username: "aciacci1234", email: "aciacci@ciacci.com", password: "Password1"), User.create(username: "joell", email: "joell@joell.com", password: "Password1"), User.create(username: "jeffey", email: "jeffey-l@jeff.com", password: "Password1")]
 
 IngredientType.create(name: "flour")
 
