@@ -26,7 +26,11 @@
         </li>
       <% end %>
     </ul>
-  <%= link_to "Add an ingredient", new_recipe_ingredient_path(@recipe) if creator?(@current_user, @recipe) %><br>
+
+  <% if creator?(@current_user, @recipe) %>
+    <div class="new_ingredient_form"><%= link_to "Add an ingredient", new_recipe_ingredient_path(@recipe), class: "add-ingredient" %><br></div>
+  <% end %>
+
   Directions: <%= @recipe.directions %><br>
   Time to make: <%= @recipe.time %><br>
   Difficulty scale: <%= @recipe.difficulty %><br>

@@ -70,3 +70,29 @@ $(document).ready(function(){
 // })
 
 
+$(document).ready(function(){
+  $(".add-ingredient").click(function(e) {
+    e.preventDefault();
+    $(e.target).toggle();
+    $.ajax({
+      url: $(e.target).attr("href"),
+      method: "get"
+    })
+    .done(function(response) {
+      $(e.target).parent().append($(response).find(".new_ingredient"));
+    });
+  });
+  $(".new_ingredient_form").submit(function(e) {
+    e.preventDefault();
+    $.ajax({
+      url: $(e.target).attr("action"),
+      method: $(e.target).attr("method"),
+      data: $("form").serialize()
+    })
+    .done(function(response) {
+      $("ul").append($(response).find("li").last());
+      $(".add-ingredient").toggle();
+      $("form").remove();
+    })
+  })
+});
