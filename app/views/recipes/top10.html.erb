@@ -1,6 +1,10 @@
 <h1>Top 10 Recipes!</h1>
-  <div>
+  <ul class="list-group">
     <% @top_recipes.each do |recipe| %>
-      <%= link_to recipe.title, recipe_path(recipe) %><br>
+      <li class="list-group-item">
+        <span class="badge">Average Rating: <%= recipe.average_rating %></span>
+        <%= link_to recipe.title, recipe_path(recipe) %>
+      </li>
     <% end %>
-  </div>
+  </ul><br>
+  <%= link_to "Back", recipes_path, class: "btn btn-primary" %><br>
