@@ -46,7 +46,11 @@ class Recipe < ActiveRecord::Base
     results = result.sort{|x, y| (x =~ regexp) <=> (y =~ regexp) }
   end
 
-  def self.search_by_title
+  def self.search_by_title(text)
+    regexp = /#{text}/i;
 
+    result = self.all.order(:title).where("title ILIKE ?", "%#{text}%").limit(10)
+
+    results = result.sort{|x, y| (x =~ regexp) <=> (y =~ regexp) }
   end
 end

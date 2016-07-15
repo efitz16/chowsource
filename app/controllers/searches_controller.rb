@@ -6,6 +6,8 @@ class SearchesController < ApplicationController
 
   @recipes_by_description = Recipe.search_by_description(params[:search])
 
+  @recipes_by_title = Recipe.search_by_title(params[:search])
+
 	render 'results'
   end
 end

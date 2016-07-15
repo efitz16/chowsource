@@ -19,4 +19,9 @@
   </div>
 
   <h3>Recipes by title</h3>
+  <div id="title-search">
+    <% @recipes_by_title.each do |r| %>
+      <%= link_to "#{r.title}", recipe_path(r) %><br>
+    <% end %>
+  </div>
 </div>
