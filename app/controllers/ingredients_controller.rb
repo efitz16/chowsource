@@ -6,12 +6,15 @@ class IngredientsController < ApplicationController
   end
 
   def new
-    # if current_user?
+    current_user
+    login_redirect
+    if current_user?
       @recipe = Recipe.find(params[:recipe_id])
       @ingredient = Ingredient.new
-    # else
-      # flash[:danger] = "Cannot Edit Recipes You Did Not Submit"
-      # redirect_to '/'
+    else
+      flash[:danger] = "Cannot Edit Recipes You Did Not Submit"
+      redirect_to '/'
+    end
   end
 
   def create
@@ -20,6 +23,7 @@ class IngredientsController < ApplicationController
     m = Measurement.find_or_create_by(name: params[:ingredient][:measurement])
 
     @ingredient = Ingredient.new(ingredient_type: i, amount: params[:ingredient][:amount].to_i, measurement: m)
+
 
     if @ingredient.save
       @recipe.ingredients << @ingredient
