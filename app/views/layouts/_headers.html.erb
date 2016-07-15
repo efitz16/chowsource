@@ -1,13 +1,27 @@
-<% if logged_in? %>
-<nav class="nav navbar navbar-right">
-    <%= link_to current_user.username, user_path(id: session[:user_id]) %> |
-    <%= link_to 'Logout', logout_path, method: :delete %> |
-  <% else %>
-    <%= link_to 'Login', login_path %> |
-    <%= link_to 'Create an account', signup_path %> |
-<% end %>
-  <%= link_to 'home', root_path %>
-</nav>
-<nav class="nav navbar navbar-right" id="search-form">
-  <%= render 'searches/search' %>
-</nav>
+<header class="navbar navbar-inverse">
+  <nav class="nav navbar navbar-right">
+    <% if logged_in? %>
+    
+        <%= link_to current_user.username, user_path(id: session[:user_id]) %> | 
+        <%= link_to 'logout', logout_path, method: :delete %> | 
+      <% else %>
+        <%= link_to 'login', login_path %> | 
+        <%= link_to 'create an account', signup_path %> | 
+      <% end %>
+
+      <%= link_to 'home', root_path %> | 
+      
+        <div class="dropdown" >
+            <button class="btn btn-sm dropdown-toggle" type="button" id="droppeddownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                recipes
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="droppeddownMenu1">
+              <li><%= link_to "top 10", ratings_path %> </li>
+              <li class="divider"></li>
+              <li><%= link_to "categories", recipes_path %> </li>
+            </ul>
+      </div>
+  </nav>
+</header>
+
+
