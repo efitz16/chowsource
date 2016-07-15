@@ -40,9 +40,7 @@ class RecipesController < ApplicationController
   def create
     if logged_in?
       @recipe = current_user.recipes.build(recipe_params)
-
       if @recipe.save
-        # redirect_to recipe_url(@recipe)
         redirect_to new_recipe_ingredient_url(@recipe)
       else
         render 'new'
