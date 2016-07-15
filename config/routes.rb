@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   resources :users, :except => [:new, :create]
 
+  resources :searches, :only => [:show, :index]
+
   resources :recipes do
     resources :ratings, only: [:create]
     resources :ingredients, shallow: true

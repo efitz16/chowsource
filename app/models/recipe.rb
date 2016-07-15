@@ -20,7 +20,8 @@ class Recipe < ActiveRecord::Base
     length = self.ratings.count
 
     if length == 0
-      self.ratings.map {|rating| rating.value}.reduce(0, :+)
+      # self.ratings.map {|rating| rating.value}.reduce(0, :+)
+      0
     else
       self.ratings.map {|rating| rating.value}.reduce(0, :+)/length
     end
@@ -35,5 +36,21 @@ class Recipe < ActiveRecord::Base
     weight = self.ratings.count/number_of_votes.to_f
 
     self.ratings.map { |r| r.value * weight }.reduce(0, :+)
+  end
+
+  def self.search_by_description(text)
+    regexp = /#{text}/i;
+
+    result = self.all.order(:description).where("description ILIKE ?", "%#{text}%").limit(1000)
+
+    results = result.sort{|x, y| (x =~ regexp) <=> (y =~ regexp) }
+  end
+
+  def self.search_by_title(text)
+    regexp = /#{text}/i;
+
+    result = self.all.order(:title).where("title ILIKE ?", "%#{text}%").limit(1000)
+
+    results = result.sort{|x, y| (x =~ regexp) <=> (y =~ regexp) }
   end
 end
