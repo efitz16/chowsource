@@ -3,13 +3,14 @@
 
   <div class="rating">
   <% 5.times do |avg| %>
-    <%= button_to "#{avg+1}", recipe_ratings_path(@recipe) + "?value=#{avg}", method: :create, class: 'rating-button', id: avg %>
+    <% avg += 1 %>
+    <%= button_to "#{avg}", recipe_ratings_path(@recipe) + "?value=#{avg}", method: :create, class: 'rating-button', id: avg %>
   <% end %>
   <br>
-  </div>
+  </div><br>
 <div class="bg-success">
   <p class="element">Course: <%= @recipe.course %></p><br>
-  <p class="element">Average Rating: <%= @recipe.average_rating %></p>
+  <p class="element" id="average">Average Rating: <%= @recipe.average_rating %></p>
   <p class="element">Description: <%= @recipe.description %></p><br>
   <p class="element">Ingredients:
     <ul>
