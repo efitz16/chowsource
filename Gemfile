@@ -47,6 +47,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'capybara', "~> 2.5"
   gem 'launchy'
+  gem 'pry-byebug'
   gem 'pry'
 end
 

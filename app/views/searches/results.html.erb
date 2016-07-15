@@ -3,12 +3,13 @@
   <h3>Recipes by ingredient</h3>
   <div id="ingredient-search">
       <% if @recipes_by_ingredient.count != nil %>
-      <% @recipes_by_ingredient.each do |i| %>
-      	<% i.each do |r| %>
-      		<%= link_to "#{r.title}", recipe_path(r) %><br>
-      	<% end %>
+        <% @recipes_by_ingredient.each do |i| %>
+        	<% i.each do |r| %>
+        		<%= link_to "#{r.title}", recipe_path(r) %><br>
+        	<% end %>
+        <% end %>
       <% end %>
-      <% end %>
+      <%= link_to "see more", search_path(id: 1) + "?search=#{params[:search]}" %>
   </div>
 
   <h3>Recipes by description</h3>
@@ -16,6 +17,7 @@
     <% @recipes_by_description.each do |r| %>
       <%= link_to "#{r.title}", recipe_path(r) %><br>
     <% end %>
+    <%= link_to "see more", search_path(id: 2) + "?search=#{params[:search]}" %>
   </div>
 
   <h3>Recipes by title</h3>
@@ -23,5 +25,6 @@
     <% @recipes_by_title.each do |r| %>
       <%= link_to "#{r.title}", recipe_path(r) %><br>
     <% end %>
+    <%= link_to "see more", search_path(id: 3) + "?search=#{params[:search]}" %>
   </div>
 </div>

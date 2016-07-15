@@ -10,9 +10,7 @@ Rails.application.routes.draw do
 
   resources :users, :except => [:new, :create]
 
-  get '/search', to: 'searches#index'
-
-  get '/search', to: 'searches#create'
+  resources :searches, :only => [:show, :index]
 
   resources :recipes do
     resources :ratings, only: [:create]

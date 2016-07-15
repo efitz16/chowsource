@@ -5,7 +5,7 @@ class IngredientType < ActiveRecord::Base
   def self.search_by_ingredient(text)
     regexp = /#{text}/i;
 
-    result = self.all.order(:name).where("name ILIKE ?", "%#{text}%").limit(10)
+    result = self.all.order(:name).where("name ILIKE ?", "%#{text}%").limit(100)
 
     results = result.sort{|x, y| (x =~ regexp) <=> (y =~ regexp) }
 

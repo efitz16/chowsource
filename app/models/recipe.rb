@@ -41,7 +41,7 @@ class Recipe < ActiveRecord::Base
   def self.search_by_description(text)
     regexp = /#{text}/i;
 
-    result = self.all.order(:description).where("description ILIKE ?", "%#{text}%").limit(10)
+    result = self.all.order(:description).where("description ILIKE ?", "%#{text}%").limit(1000)
 
     results = result.sort{|x, y| (x =~ regexp) <=> (y =~ regexp) }
   end
@@ -49,7 +49,7 @@ class Recipe < ActiveRecord::Base
   def self.search_by_title(text)
     regexp = /#{text}/i;
 
-    result = self.all.order(:title).where("title ILIKE ?", "%#{text}%").limit(10)
+    result = self.all.order(:title).where("title ILIKE ?", "%#{text}%").limit(1000)
 
     results = result.sort{|x, y| (x =~ regexp) <=> (y =~ regexp) }
   end
