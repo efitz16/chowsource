@@ -1,0 +1,6 @@
+<h1>Top 10 Recipes!</h1>
+  <div>
+    <% @top_recipes.each do |recipe| %>
+      <%= link_to recipe.title, recipe_path(recipe) %><br>
+    <% end %>
+  </div>

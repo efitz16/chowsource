@@ -1,4 +1,5 @@
-<h1>All Categories</h1><br><br>
+<h1>All Categories</h1><br>
+  <%= link_to "Top 10 Recipes", ratings_path %><br><br>
   <h3><%= link_to "Appetizers", recipes_path %></h3><br>
     <div>
       <% @appetizers.each do |appetizer| %>

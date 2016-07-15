@@ -9,6 +9,10 @@ class RecipesController < ApplicationController
     @snacks = Recipe.where(course: "Snack")
   end
 
+  def top10
+    @top_recipes = Recipe.sort_by_rating.first(10)
+  end
+
   def show
     @recipe = Recipe.find(params[:id])
   end

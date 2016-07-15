@@ -6,10 +6,12 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
-  resources :users, :except => [:new]
+  get '/recipes/top10', to: 'recipes#top10', as: 'ratings'
+
+  resources :users, :except => [:new, :create]
 
   resources :recipes do
-    resources :ratings, shallow: true
+    resources :ratings, only: [:create]
     resources :ingredients, shallow: true
   end
 end
