@@ -11,7 +11,7 @@
   <%=f.text_field :ingredient_type, :required => true %><br>
 
   <%=f.label :amount %>
-  <%=f.number_field :amount, :required => true %><br>
+  <%=f.number_field :amount, :required => true, min: 0 %><br>
 
   <%=f.label :measurement %>
   <%=f.select :measurement, options_for_measurements, prompt:"--"  %><br>

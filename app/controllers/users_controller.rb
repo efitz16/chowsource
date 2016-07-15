@@ -2,20 +2,27 @@ class UsersController < ApplicationController
 
   before_action :correct_user, only: [:edit, :update, :destroy]
 
-  def index 
+  def index
     @users = User.all
   end
 
-  def show 
-    @user = User.find(params[:id])
-    @recipes = @user.recipes.all
+  def show
+    @user = User.find_by(id: params[:id])
+    if @user == nil
+      redirect_to root_url
+    else
+      @recipes = @user.recipes.all
+    end
   end
 
-  def new 
+  def new
     @user = User.new
+    if logged_in?
+      redirect_to root_url
+    end
   end
 
-  def create 
+  def create
     @user = User.new(user_params)
     if @user.save
       flash[:success] = "Get cooking! You've created a Chowsource Account!"
@@ -26,14 +33,14 @@ class UsersController < ApplicationController
     end
   end
 
-  def edit 
+  def edit
     @user = User.find(params[:id])
     if !current_user?
     flash[:danger]= "Hey! Edit your own profile, please!"
     end
   end
 
-  def update 
+  def update
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
       flash[:success] = "Profile updated!"
@@ -45,14 +52,14 @@ class UsersController < ApplicationController
 
   def destroy
     @current_user.destroy
-    redirect_to root_url 
+    redirect_to root_url
   end
 
-  
 
-  private 
 
-  def user_params 
+  private
+
+  def user_params
     params.require(:user).permit(:username, :email, :password)
   end
 

@@ -29,7 +29,7 @@
 
   <p>
     <%= f.label :time_in_minutes %><br>
-    <%= f.number_field :time %>
+    <%= f.number_field :time, min: 0 %>
   </p>
 
   <p>
