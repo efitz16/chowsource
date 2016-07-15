@@ -11,11 +11,10 @@
 // about supported directives.
 //
 //= require jquery
-//= require bootstrap
 //= require jquery_ujs
 //= require_tree 
 
-$(document).ready(function(){
-  $('.dropdown-toggle').dropdown();
+// $(document).ready(function(){
+//   $('.dropdown-toggle').dropdown();
 
-})
+// })

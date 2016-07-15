@@ -3,13 +3,23 @@
   border-radius: 15px;
 }
 
-.post-form {
-  margin-top: em;
+header {
+  font-family: Lucid Sans Unicode;
+  box-shadow: 10px 10px 5px #888888;
+  margin-bottom: 5em;
+  .navbar-brand {
+  padding-top: 15px;
+  font-size: 55px;
+  font-family: Comic Sans MS;
+  }
+  a {
+  margin-right: 15px;
+  margin-left: 20px;
+  }
+  .dropdown {
+  padding-top: 15px;
+  }
 }
 
  
-.navbar {
-  ul{
-  list-style: none;
-  }
-} 
+
