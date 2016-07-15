@@ -1,6 +1,9 @@
 class RecipesController < ApplicationController
-  before_action :current_user, :only => [:show]
+  before_action :current_user, :only => [:show, :index]
   def index
+    if logged_in?
+      @recipe = @current_user.recipes.build
+    end
     @appetizers = Recipe.where(course: "Appetizer")
     @breakfasts = Recipe.where(course: "Breakfast")
     @lunches = Recipe.where(course: "Lunch")
