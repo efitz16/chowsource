@@ -11,6 +11,4 @@ class IngredientType < ActiveRecord::Base
 
     results.map { |r| r.recipes }
   end
-
-
 end

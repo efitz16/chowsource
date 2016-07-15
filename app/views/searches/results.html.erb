@@ -1,9 +1,22 @@
-<div>
-<% if @searchable_shit.count != nil %>
-<% @searchable_shit.each do |i| %>
-	<% i.each do |r| %>
-		<%= link_to "#{r.title}", recipe_path(r) %>
-	<% end %>
-<% end %>
-<% end %>
+<div class="results">
+
+  <h3>Recipes by ingredient</h3>
+  <div id="ingredient-search">
+      <% if @recipes_by_ingredient.count != nil %>
+      <% @recipes_by_ingredient.each do |i| %>
+      	<% i.each do |r| %>
+      		<%= link_to "#{r.title}", recipe_path(r) %><br>
+      	<% end %>
+      <% end %>
+      <% end %>
+  </div>
+
+  <h3>Recipes by description</h3>
+  <div id="description-search">
+    <% @recipes_by_description.each do |r| %>
+      <%= link_to "#{r.title}", recipe_path(r) %><br>
+    <% end %>
+  </div>
+
+  <h3>Recipes by title</h3>
 </div>
