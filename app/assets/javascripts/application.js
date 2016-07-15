@@ -92,7 +92,7 @@ $(document).ready(function(){
     .done(function(response) {
       $("ul").append($(response).find("li").last());
       $(".add-ingredient").toggle();
-      $("form").remove();
+      $(".new_ingredient").remove();
     })
   })
 });
