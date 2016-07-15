@@ -1,7 +1,19 @@
 class RecipesController < ApplicationController
-  before_action :current_user, :only => [:show]
+  before_action :current_user, :only => [:show, :index]
   def index
-    @recipes = Recipe.all
+    if logged_in?
+      @recipe = @current_user.recipes.build
+    end
+    @appetizers = Recipe.where(course: "Appetizer")
+    @breakfasts = Recipe.where(course: "Breakfast")
+    @lunches = Recipe.where(course: "Lunch")
+    @dinners = Recipe.where(course: "Dinner")
+    @desserts = Recipe.where(course: "Dessert")
+    @snacks = Recipe.where(course: "Snack")
+  end
+
+  def top10
+    @top_recipes = Recipe.sort_by_rating.first(10)
   end
 
   def show
