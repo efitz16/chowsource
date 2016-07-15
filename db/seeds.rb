@@ -12,7 +12,7 @@ users = [User.create(username: "hello", email: "h@h.com", password_digest: "Pass
 
 IngredientType.create(name: "flour")
 
-types = %w(flour butter milk eggs chicken rabbit jeff beef carrots corn oranges apples pears honey tea pepper salt)
+types = %w(flour butter milk eggs chicken rabbit jeff beef carrots corn oranges apples pears honey tea pepper salt tofu)
 
 Measurement.create(name: "cup")
 
@@ -50,6 +50,14 @@ end
   Recipe.create(title: Faker::Beer.name, course: courses.sample, directions: Faker::Hipster.sentences, description: Faker::Lorem.sentence, time: rand(1..100), difficulty: rand(1..5), user: users.sample)
 end
 
+16.times do
+  Recipe.create(title: "Tofu " + Faker::Beer.name, course: courses.sample, directions: Faker::Hipster.sentences, description: "Tofuncular " + Faker::Lorem.sentence, time: rand(1..100), difficulty: rand(1..5), user: users.sample)
+end
+
+6.times do
+  Recipe.create(title: "Tofrutti " + Faker::Beer.name, course: courses.sample, directions: Faker::Hipster.sentences, description: "Tofu tofunny " + Faker::Lorem.sentence, time: rand(1..100), difficulty: rand(1..5), user: users.sample)
+end
+
 les_ingredients = []
 
 46.times do
@@ -58,6 +66,10 @@ end
 
 56.times do
   FoodPrep.create(ingredient: les_ingredients.sample, recipe: Recipe.all.sample)
+end
+
+857.times do
+	Rating.create(user: users.sample, recipe: Recipe.all.sample, value: rand(1..5))
 end
 
 # can this be cleaned up: Recipe.find(59).ingredients.first.ingredient_type.name
