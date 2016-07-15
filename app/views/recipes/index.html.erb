@@ -1,7 +1,42 @@
-<h1>All Recipes</h1>
+<h1>All Categories</h1><br><br>
+  <h3><%= link_to "Appetizers", recipes_path %></h3><br>
+    <div>
+      <% @appetizers.each do |appetizer| %>
+        <%= link_to appetizer.title, recipe_path(appetizer) %><br>
+      <% end %>
+    </div><br>
 
-  <%= link_to "New Recipe", new_recipe_path %><br>
+  <h3><%= link_to "Breakfasts", recipes_path %></h3><br>
+    <div>
+      <% @breakfasts.each do |breakfast| %>
+        <%= link_to breakfast.title, recipe_path(breakfast) %><br>
+      <% end %>
+    </div><br>
 
-<% @recipes.each do |recipe| %>
-  <%= link_to recipe.title, recipe_path(recipe) %><br>
-<% end %>
+  <h3><%= link_to "Lunches", recipes_path %></h3><br>
+    <div>
+      <% @lunches.each do |lunch| %>
+        <%= link_to lunch.title, recipe_path(lunch) %><br>
+      <% end %>
+    </div><br>
+
+  <h3><%= link_to "Dinners", recipes_path %></h3><br>
+    <div>
+      <% @dinners.each do |dinner| %>
+        <%= link_to dinner.title, recipe_path(dinner) %><br>
+      <% end %>
+    </div><br>
+
+  <h3><%= link_to "Desserts", recipes_path %></h3><br>
+    <div>
+      <% @desserts.each do |dessert| %>
+        <%= link_to dessert.title, recipe_path(dessert) %><br>
+      <% end %>
+    </div><br>
+
+  <h3><%= link_to "Snacks", recipes_path %></h3><br>
+    <div>
+      <% @snacks.each do |snack| %>
+        <%= link_to snack.title, recipe_path(snack) %><br>
+      <% end %>
+    </div><br>

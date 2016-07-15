@@ -1,7 +1,12 @@
 class RecipesController < ApplicationController
   before_action :current_user, :only => [:show]
   def index
-    @recipes = Recipe.all
+    @appetizers = Recipe.where(course: "Appetizer")
+    @breakfasts = Recipe.where(course: "Breakfast")
+    @lunches = Recipe.where(course: "Lunch")
+    @dinners = Recipe.where(course: "Dinner")
+    @desserts = Recipe.where(course: "Dessert")
+    @snacks = Recipe.where(course: "Snack")
   end
 
   def show
