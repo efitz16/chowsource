@@ -1,0 +1,16 @@
+<div class="search-list" id="search-list-by-recipes">
+  <% if @recipes %>
+    <% @recipes.each do |r| %>
+    <%= link_to r.title, recipe_path(r) %><br>
+    <% end %>
+  <% end %>
+</div>
+<div class="search-list" id="search-list-by-ingredients">
+  <% if @ingredients %>
+    <% @ingredients.each do |i| %>
+      <% i.each do |r| %>
+        <%= link_to r.title, recipe_path(r) %><br>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
