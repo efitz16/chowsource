@@ -1,43 +1,88 @@
 <h1>All Categories</h1><br>
   <%= link_to "Top 10 Recipes", ratings_path %><br><br>
-  <h3><%= link_to "Appetizers", recipes_path %></h3><br>
-    <div>
-      <% @appetizers.each do |appetizer| %>
-        <%= link_to appetizer.title, recipe_path(appetizer) %><br>
-      <% end %>
-    </div><br>
-
-  <h3><%= link_to "Breakfasts", recipes_path %></h3><br>
-    <div>
-      <% @breakfasts.each do |breakfast| %>
-        <%= link_to breakfast.title, recipe_path(breakfast) %><br>
-      <% end %>
-    </div><br>
-
-  <h3><%= link_to "Lunches", recipes_path %></h3><br>
-    <div>
-      <% @lunches.each do |lunch| %>
-        <%= link_to lunch.title, recipe_path(lunch) %><br>
-      <% end %>
-    </div><br>
-
-  <h3><%= link_to "Dinners", recipes_path %></h3><br>
-    <div>
-      <% @dinners.each do |dinner| %>
-        <%= link_to dinner.title, recipe_path(dinner) %><br>
-      <% end %>
-    </div><br>
-
-  <h3><%= link_to "Desserts", recipes_path %></h3><br>
-    <div>
-      <% @desserts.each do |dessert| %>
-        <%= link_to dessert.title, recipe_path(dessert) %><br>
-      <% end %>
-    </div><br>
-
-  <h3><%= link_to "Snacks", recipes_path %></h3><br>
-    <div>
-      <% @snacks.each do |snack| %>
-        <%= link_to snack.title, recipe_path(snack) %><br>
-      <% end %>
-    </div><br>
+<div class="panel-group" role="tablist">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="collapseListGroupHeading1">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" href="#collapseListGroup1" aria-expanded="false" aria-controls="collapseListGroup1"> Appetizers </a>
+      </h4>
+    </div>
+    <div id="collapseListGroup1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="collapseListGroupHeading1" aria-expanded="false" style="height: 0px;">
+      <ul class="list-group">
+        <% @appetizers.each do |appetizer| %>
+          <li class="list-group-item"><%= link_to appetizer.title, recipe_path(appetizer) %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="collapseListGroupHeading2">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" href="#collapseListGroup2" aria-expanded="false" aria-controls="collapseListGroup2"> Breakfasts </a>
+      </h4>
+    </div>
+    <div id="collapseListGroup2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="collapseListGroupHeading2" aria-expanded="false" style="height: 0px;">
+      <ul class="list-group">
+        <% @breakfasts.each do |breakfast| %>
+          <li class="list-group-item"><%= link_to breakfast.title, recipe_path(breakfast) %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="collapseListGroupHeading3">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" href="#collapseListGroup3" aria-expanded="false" aria-controls="collapseListGroup3"> Lunches </a>
+      </h4>
+    </div>
+    <div id="collapseListGroup3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="collapseListGroupHeading3" aria-expanded="false" style="height: 0px;">
+      <ul class="list-group">
+        <% @lunches.each do |lunch| %>
+          <li class="list-group-item"><%= link_to lunch.title, recipe_path(lunch) %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="collapseListGroupHeading4">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" href="#collapseListGroup4" aria-expanded="false" aria-controls="collapseListGroup4"> Dinners </a>
+      </h4>
+    </div>
+    <div id="collapseListGroup4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="collapseListGroupHeading4" aria-expanded="false" style="height: 0px;">
+      <ul class="list-group">
+        <% @dinners.each do |dinner| %>
+          <li class="list-group-item"><%= link_to dinner.title, recipe_path(dinner) %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="collapseListGroupHeading5">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" href="#collapseListGroup5" aria-expanded="false" aria-controls="collapseListGroup5"> Desserts </a>
+      </h4>
+    </div>
+    <div id="collapseListGroup5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="collapseListGroupHeading5" aria-expanded="false" style="height: 0px;">
+      <ul class="list-group">
+        <% @desserts.each do |dessert| %>
+          <li class="list-group-item"><%= link_to dessert.title, recipe_path(dessert) %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="collapseListGroupHeading6">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" href="#collapseListGroup6" aria-expanded="false" aria-controls="collapseListGroup6"> Snacks </a>
+      </h4>
+    </div>
+    <div id="collapseListGroup6" class="panel-collapse collapse" role="tabpanel" aria-labelledby="collapseListGroupHeading6" aria-expanded="false" style="height: 0px;">
+      <ul class="list-group">
+        <% @snacks.each do |snack| %>
+          <li class="list-group-item"><%= link_to snack.title, recipe_path(snack) %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
