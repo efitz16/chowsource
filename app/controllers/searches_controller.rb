@@ -12,15 +12,16 @@ class SearchesController < ApplicationController
   def show
     case params[:id]
     when "1"
-      @recipes = IngredientType.search_by_ingredient(params[:search])
+      @ingredients = IngredientType.search_by_ingredient(params[:search])
     when "2"
       @recipes = Recipe.search_by_description(params[:search])
     when "3"
       @recipes = Recipe.search_by_title(params[:search])
     end
 
-    @search = true #say don't show new recipe...if you want
+    # @search = true #say don't show new recipe...if you want
 
-    render 'recipes/index'
+    render 'searches/index'
+
   end
 end
