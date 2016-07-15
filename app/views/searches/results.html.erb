@@ -1,0 +1,9 @@
+<div>
+<% if @searchable_shit.count != nil %>
+<% @searchable_shit.each do |i| %>
+	<% i.each do |r| %>
+		<%= link_to "#{r.title}", recipe_path(r) %>
+	<% end %>
+<% end %>
+<% end %>
+</div>

@@ -36,4 +36,12 @@ class Recipe < ActiveRecord::Base
 
     self.ratings.map { |r| r.value * weight }.reduce(0, :+)
   end
+
+  def self.search_by_description
+
+  end
+
+  def self.search_by_title
+
+  end
 end
