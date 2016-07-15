@@ -47,15 +47,15 @@ measurementz = []
 end
 
 56.times do
-  Recipe.create(title: Faker::Beer.name, course: courses.sample, directions: Faker::Hipster.sentences, description: Faker::Lorem.sentence, time: rand(1..100), difficulty: rand(1..5), user: users.sample)
+  Recipe.create(title: Faker::Beer.name, course: courses.sample, directions: Faker::Hipster.sentences.join(' '), description: Faker::Lorem.sentence, time: rand(1..100), difficulty: rand(1..5), user: users.sample)
 end
 
 16.times do
-  Recipe.create(title: "Tofu " + Faker::Beer.name, course: courses.sample, directions: Faker::Hipster.sentences, description: "Tofuncular " + Faker::Lorem.sentence, time: rand(1..100), difficulty: rand(1..5), user: users.sample)
+  Recipe.create(title: "Tofu " + Faker::Beer.name, course: courses.sample, directions: Faker::Hipster.sentences.join(' '), description: "Tofuncular " + Faker::Lorem.sentence, time: rand(1..100), difficulty: rand(1..5), user: users.sample)
 end
 
 6.times do
-  Recipe.create(title: "Tofrutti " + Faker::Beer.name, course: courses.sample, directions: Faker::Hipster.sentences, description: "Tofu tofunny " + Faker::Lorem.sentence, time: rand(1..100), difficulty: rand(1..5), user: users.sample)
+  Recipe.create(title: "Tofrutti " + Faker::Beer.name, course: courses.sample, directions: Faker::Hipster.sentences.join(' '), description: "Tofu tofunny " + Faker::Lorem.sentence, time: rand(1..100), difficulty: rand(1..5), user: users.sample)
 end
 
 les_ingredients = []
