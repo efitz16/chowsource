@@ -6,20 +6,22 @@ class IngredientsController < ApplicationController
   end
 
   def new
-    # if current_user?
-      @recipe = Recipe.find(params[:recipe_id])
+    current_user
+    login_redirect
+    @recipe = Recipe.find(params[:recipe_id])
+    if current_user == @recipe.user
       @ingredient = Ingredient.new
-    # else
-      # flash[:danger] = "Cannot Edit Recipes You Did Not Submit"
-      # redirect_to '/'
+    end
   end
 
   def create
+
     @recipe = Recipe.find(params[:recipe_id])
     i = IngredientType.find_or_create_by(name: params[:ingredient][:ingredient_type])
     m = Measurement.find_or_create_by(name: params[:ingredient][:measurement])
 
     @ingredient = Ingredient.new(ingredient_type: i, amount: params[:ingredient][:amount].to_i, measurement: m)
+
 
     if @ingredient.save
       @recipe.ingredients << @ingredient
@@ -31,17 +33,27 @@ class IngredientsController < ApplicationController
   end
 
   def edit
+    @recipe = @ingredient.recipes.first
+    if current_user != @recipe.user
+      redirect_to recipe_url(@recipe)
+    end
 
   end
 
-  def update()
-
+  def update
+    current_user
+    login_redirect
     @recipe = @ingredient.recipes.first
+
     edit_ingredient = IngredientType.find_or_create_by(name: ingredient_params[:name])
     edit_measurement = Measurement.find_or_create_by(name: ingredient_params[:meas])
 
-    if @ingredient.update_attributes(ingredient_type: edit_ingredient, amount: params[:ingredient][:amount] , measurement: edit_measurement)
-      redirect_to recipe_path(@recipe)
+    if current_user == @recipe.user
+      if @ingredient.update_attributes(ingredient_type: edit_ingredient, amount: params[:ingredient][:amount] , measurement: edit_measurement)
+        redirect_to recipe_path(@recipe)
+      else
+        redirect_to recipe_url(@recipe)
+      end
     end
 
   end

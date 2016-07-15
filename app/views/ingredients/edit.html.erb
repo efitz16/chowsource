@@ -1,5 +1,5 @@
 <h1> Edit Ingredient </h1>
-<%=form_for([@recipe, @ingredient]) do |f| %>
+<%=form_for(@ingredient) do |f| %>
   <%=f.label :ingredient_type %>
   <%=f.text_field :name %><br>
 
