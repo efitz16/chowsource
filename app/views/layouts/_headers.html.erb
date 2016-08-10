@@ -1,11 +1,9 @@
 <header class=" nav navbar navbar-inverse">
   <a class="navbar-brand center-block" href="#">ChowSource</a>
     <nav class="navbar-right">
-      <form class="navbar-form navbar-left" role="search">
         <div class="form-group" id="search-form">
           <%= render 'searches/search' %>
-        </div>  
-      </form>
+        </div> 
       <% if logged_in? %>
           <%= link_to current_user.username, user_path(id: session[:user_id]) %> |
           <%= link_to 'logout', logout_path, method: :delete %> |
