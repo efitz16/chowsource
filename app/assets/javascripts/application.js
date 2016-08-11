@@ -16,59 +16,48 @@
 
 $(document).ready(function(){
   $('.dropdown-toggle').dropdown();
-})
 
-$(document).ready(function(){
+  function showRating() {
+    var length = $('.rating-button').length;
 
-  var length = $('.rating-button').length;
-
-    for (var i = 0; i < length; i++) {
-      if ($($('.rating-button')[i]).attr('id') <= $('#average').text().slice(-1)){
-        $($('.rating-button')[i]).css({'background-color': 'yellow'});
-        $($('.rating-button')[i]).addClass("stay");
+      for (var i = 0; i < length; i++) {
+        if ($($('.rating-button')[i]).attr('id') <= $('#average').text().slice(-1)){
+          $($('.rating-button')[i]).css({'background-color': 'yellow'});
+          $($('.rating-button')[i]).addClass("stay");
+        }
       }
+  }
+
+  function removeRating() {
+    var length = $('.rating-button').length;
+
+    for (var i = 0; i < length; i++) { 
+      $($('.rating-button')[i]).css({'background-color': 'white'});
     }
+  }
 
-    // var mousedover = [];
+  showRating();
 
-    // $('.rating-button').on("mouseover", function(e){
-    //   mousedover.push($(e.target).attr('id'));
-    // });
-
-    $('.rating-button').on("mouseover", function(e){
-      // if ($(e.target).attr('id') <= ) {
+  $('.rating-button').on("mouseover", function(e){
         var button = $(e.target);
+        var length = $('.rating-button').length;
+
         for (var i = 0; i < length; i++) {
           if ($($('.rating-button')[i]).attr('id') <= button.attr('id')) {
             $($('.rating-button')[i]).css({'background-color': 'yellow'});
           }
+          else {
+            $($('.rating-button')[i]).css({'background-color': 'white'});
+          }
         }
-      // $(e.target).css({'background-color': 'yellow'});
-      });
-    $('.rating-button').on("mouseleave", function(e){
-      var button = $(e.target);
-      for (var i = 0; i < length; i++) {
-        if ($($('.rating-button')[i]).attr('id') > $('#average').text().slice(-1)) {
-          $($('.rating-button')[i]).css({'background-color': 'white'});
-        }
+    });
 
-      }
+  $('.rating-button').on("mouseleave", function(e){
+      removeRating();
+      showRating();
+  });
 
-
-      // if (!($(e.target).hasClass("stay"))) {
-      //     if ($(e.target).attr('id') > $('#average').text().slice(-1)){
-      //       $(e.target).css({'background-color': 'white'});
-      //     }
-      // }
-      });
-})
-
-
-// $(document).ready(function(){
-//   $('.dropdown-toggle').dropdown();
-
-// })
-
+});
 
 $(document).ready(function(){
   $(".add-ingredient").click(function(e) {

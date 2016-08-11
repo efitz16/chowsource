@@ -19,8 +19,6 @@ class SearchesController < ApplicationController
       @recipes = Recipe.search_by_title(params[:search])
     end
 
-    # @search = true #say don't show new recipe...if you want
-
     render 'searches/index'
 
   end
